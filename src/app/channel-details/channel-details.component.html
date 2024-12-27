@@ -1,0 +1,56 @@
+<div class="container mt-5">
+    <h2 class="text-center mb-4">{{isUpdate ?
+        'Channel Information Form':'Create New'}}</h2>
+
+    <!-- Form -->
+    <form #form="ngForm" (ngSubmit)="Submit(
+        channel_name.value,
+        channel_id.value,
+        status.value
+        )" >
+        <div class="form-group" *ngIf="data?.id">
+            <label for="id">ID</label>
+            <input type="number" class="form-control" #id
+                placeholder="Enter ID" [value]="data?.id" readonly >
+        </div>
+        <div class="form-group">
+            <label for="channelId">Channel ID</label>
+            <input type="text" class="form-control" #channel_id
+                placeholder="Enter Channel ID" [value]="data?.channel_id">
+        </div>
+        <div class="form-group">
+            <label for="channelName">Channel Name</label>
+            <input type="text" class="form-control" #channel_name
+                placeholder="Enter Channel Name" [value]="data?.channel_name">
+        </div>
+
+        
+
+        <!-- <div class="form-group">
+            <label for="chatId">Chat ID</label>
+            <input type="text" class="form-control" #chat_id
+                placeholder="Enter Chat ID" [value]="data?.chat_id">
+        </div> -->
+
+        
+
+        <div class="form-group">
+            <label for="status">Status</label>
+            <select class="form-control" #status>
+                <option value="1" [selected]="data?.status===1">Active</option>
+                <option value="0"
+                    [selected]="data?.status===0">Inactive</option>
+
+            </select>
+        </div>
+
+        <!-- <div class="form-group">
+            <label for="telegramChannelId">Telegram Channel ID</label>
+            <input type="text" class="form-control" id="telegramChannelId"
+                placeholder="Enter Telegram Channel ID" value="1002344379623">
+        </div> -->
+
+        <button type="submit"
+            class="btn btn-primary btn-block mt-4">Submit</button>
+    </form>
+</div>

@@ -1,0 +1,47 @@
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Post List</h2>
+    <div class="table-responsive">
+        <button class="btn btn-info btn-sm" routerLink="/post-details">Create
+            new</button>
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Post Title</th>
+                    <th>Contents</th>
+                    <th>Channel</th>
+                    <th>Status</th>
+                    <th>Post ID</th>
+                    <th>Publish Time</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of data">
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.post_title }}</td>
+                    <td>
+                        <div class="post_contents">{{ item.post_contents }}</div>
+                    </td>
+                    <td>{{ item.telegram_channel_id }}</td>
+                    <td [className]="item.status==1?'not-post':'posted'">{{ item.status==1?"Chưa đăng":"Đã đăng" }} <i class="bi bi-check-lg" *ngIf="item.status==2"></i></td>
+                    <td>{{ item.telegram_post_id }} </td>
+                    <td>{{ formatDateTime(item.publish_time)}} </td>
+                    <td>
+                        <button class="btn btn-info btn-sm"
+                            routerLink="/post-details"
+                            [queryParams]="{ post_id: item.id }">Edit</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Phân trang -->
+    <div class="d-flex justify-content-center mt-4">
+        <button *ngFor="let page of [].constructor(totalPage); let i = index"
+            class="btn btn-info btn-sm mx-1" (click)="ChangePage(i)">
+            {{ i + 1 }}
+        </button>
+    </div>
+</div>

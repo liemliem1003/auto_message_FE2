@@ -1,0 +1,12 @@
+.posted{
+    color: green;
+    font-weight: bold;
+}
+
+.post_contents{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    width: 400px;
+}
